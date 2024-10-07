@@ -1,0 +1,111 @@
+@use 'variable' as v;
+@use 'mixin' as m;
+@use 'function' as f;
+
+/* ===============================================
+footer
+=============================================== */
+.p-footer {
+  background: v.$color-primary;
+  color: #fff;
+}
+
+.p-footer__company {
+  text-align: center;
+  line-height: f.pxToRem(28);
+}
+
+.p-footer__logo {
+  margin-bottom: f.pxToRem(16);
+}
+
+.p-footer__nav {
+  display: flex;
+  margin-top: f.pxToRem(46);
+
+  @include m.mq('sp'){
+    flex-flow: column wrap;
+  } 
+
+  li {
+    @media(767px < width){
+      &:not(:first-child){
+        border-left: 1px solid #fff;
+      }
+    }
+    
+    @include m.mq('sp'){
+      padding: f.pxToRem(20) 0;
+      text-align: center;
+     
+      &:not(:first-child){
+        border-top: 1px solid #fff;
+      }
+    } 
+    
+    a {
+      padding: 0 f.pxToRem(30);
+      text-align: center;
+      transition: 0.5s ease-out;
+
+      @include m.mq('sp'){
+        padding: f.pxToRem(10) f.pxToRem(60);
+      } 
+
+      &:hover {
+        opacity: .6;
+      }
+    }
+  }
+}
+
+.p-footer__bottom {
+  border-top: 1px solid #fff;
+  background: #333;
+  color: #fff;
+  height: f.pxToRem(48);
+
+  @include m.mq('sp'){
+    height: f.pxToRem(112);
+  } 
+}
+
+.p-footer-bottom__nav {
+  align-items: center;
+  display: flex;
+  padding: f.pxToRem(12) 0;
+
+  @include m.mq('sp'){
+    justify-content: center;
+  } 
+ 
+  li {
+    padding-right: f.pxToRem(30);
+    
+    &:not(:first-child) {
+      border-left: 1px solid #fff;
+      padding-left: f.pxToRem(28);
+    }
+    
+    a {
+      transition: 0.5s ease-out;
+
+      &:hover {
+        opacity: .6;
+      }
+      
+      @include m.mq('sp'){
+        font-size: f.pxToRem(14);
+      } 
+    }
+  }
+}
+
+.p-footer__copyright {
+  margin-left: auto;
+ 
+  &.is-sp {
+    margin: f.pxToRem(32) 0 f.pxToRem(16);
+    text-align: center;
+  }
+}

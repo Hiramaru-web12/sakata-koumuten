@@ -1,0 +1,357 @@
+@use 'variable' as v;
+@use 'mixin' as m;
+@use 'function' as f;
+
+/* ===============================================
+mv
+=============================================== */
+.p-mv {
+  width: 100%;
+  height: f.pxToRem(900);
+  background: transparent url(../img/top-image.jpg@2x.jpg) no-repeat center center / cover; 
+}
+
+.p-mv__inner {
+  height: inherit;
+  position: relative;
+}
+
+.p-mv__copy {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+/* ===============================================
+concept
+=============================================== */
+.p-concept__wrap {
+  position: relative;
+  margin-top: f.pxToRem(48);
+}
+
+.p-concept__img {
+    background: url(../img/image-concept.jpg@2x.jpg) top right/ 80% no-repeat;
+    right: 0;
+    padding-top: 30%;
+
+  @media( width < 640px){
+    background: url(../img/image-concept.jpg@2x.jpg) center center/ cover no-repeat;
+    right: 0;
+    padding-top: 100%;
+  } 
+
+}
+
+.p-concept__container {
+  background: v.$color-primary;
+  color: #fff;
+  width: min(100%, f.pxToRem(640));
+  padding: f.pxToRem(52) f.pxToRem(44);
+  box-sizing: border-box;
+  
+  @include m.mq('pc'){
+    position: absolute;
+    top: f.pxToRem(180);
+  } 
+  
+  @include m.mq('tab'){
+    position: absolute;
+    top: f.pxToRem(120);
+    padding: f.pxToRem(36);
+    width: f.pxToRem(420);
+  } 
+
+  @include m.mq('sp'){
+    padding: f.pxToRem(50) f.pxToRem(20);
+    height: f.pxToRem(316);
+  } 
+}
+
+.p-concept__subTitle {
+  font-size: clamp(1.25rem, 1.162rem + 0.38vw, 1.5rem);
+  line-height: (36 / 24);
+}
+
+.p-concept__text {
+  line-height: (40 / 16);
+  letter-spacing: .5;
+  margin-top: clamp(0.5rem, 0.148rem + 1.5vw, 1.5rem);
+
+  @include m.mq('sp'){
+    line-height: (32 / 16);
+  } 
+}
+
+/* ===============================================
+works
+=============================================== */
+.p-works__bg {
+  position: relative;
+  z-index: -1;
+
+  &::before {
+    position: absolute;
+    content: "";
+    background: #eeead0;
+    height: f.pxToRem(638);
+    width: 68.5%;
+    right: 0;
+    bottom: f.pxToRem(20);
+    top: f.pxToRem(350);
+
+    @include m.mq('sp'){
+      top: f.pxToRem(370);
+      width: 74.7%;
+    } 
+  }
+}
+
+.p-works__items {
+  display: grid;
+  margin-top: f.pxToRem(32);
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  gap: clamp(1rem, 0.472rem + 2.25vw, 2.5rem);
+
+  @include m.mq('sp'){
+    grid-template-columns: 1fr 1fr;
+  } 
+
+  @include m.mq('tab'){
+    grid-template-columns: 1fr 1fr;
+  } 
+}
+
+.p-works__item {
+  width: f.pxToRem(320);
+
+  @include m.mq('sp'){
+    width: f.pxToRem(160);
+  } 
+
+  img {
+    width: 100%;
+    align-items: center;
+  }
+}
+
+.p-works__boby {
+  position: relative;
+  padding: f.pxToRem(20) f.pxToRem(30);
+
+  @include m.mq('sp'){
+    padding: f.pxToRem(16) f.pxToRem(16);
+  } 
+
+  &::before {
+   position: absolute;
+   content: "";
+   display: block;
+   background: #333;
+   width: f.pxToRem(1);
+   height: f.pxToRem(144);
+   left: clamp(0.5rem, 0.148rem + 1.5vw, 1.5rem);
+   bottom: 25%;
+
+   @include m.mq('sp'){
+    height: f.pxToRem(96);
+   } 
+  }
+}
+
+.p-works__itemTitle {
+  font-size: clamp(1rem, 0.912rem + 0.38vw, 1.25rem);
+}
+
+.p-works__footer {
+  margin-top: f.pxToRem(76);
+  text-align: center;
+
+  @include m.mq('sp'){
+    margin-top: 0;
+  } 
+}
+
+/* ===============================================
+news
+=============================================== */
+.p-news__container {
+  margin-top: f.pxToRem(56);
+  display: flex;
+  flex-flow: column wrap;
+  gap: f.pxToRem(22);
+
+  li {
+    transition: .5s ease-out;
+
+    @include m.mq('sp'){
+      &:not(:last-child){
+        border-bottom:1px solid #e5e5e5;
+     } 
+    }
+    
+    a {
+      display: flex;
+      align-items: center;
+      
+      @include m.mq('sp'){
+        flex-flow: column wrap;
+        align-items: flex-start;
+        line-height: f.pxToRem(24);
+      } 
+    }
+
+    &:hover {
+      opacity: .6;
+    }
+  }
+}
+
+.p-news-list__meta {
+  font-family: v.$font-en;
+  display: flex;
+
+  @media ( 767px < width){
+    line-height: f.pxToRem(56);
+  }
+}
+
+.p-news-list__date {
+  @media ( 767px < width){
+    width: f.pxToRem(155);
+    display: block;
+    text-align: center;
+    border-right: 1px solid #e5e5e5;
+  } 
+}
+
+.p-news-list__category {
+  @media ( 767px < width){
+    width: f.pxToRem(140);
+    text-align: center;
+    border-right: 1px solid #e5e5e5;
+  } 
+    
+    @include m.mq('sp'){
+      font-size: f.pxToRem(14);
+      padding-left: f.pxToRem(20);
+    } 
+    
+    &.is-accent {
+      color: v.$color-accent;
+    }
+  }
+
+.p-news-list__title {
+  @media ( 767px < width){
+    width: calc(100% - 295px);
+    padding-left: f.pxToRem(36);
+  } 
+
+    @include m.mq('sp'){
+      padding: f.pxToRem(10) 0 f.pxToRem(22);
+      width: 100%;
+      background-origin: padding-box;
+    } 
+  } 
+
+
+/* ===============================================
+contact
+=============================================== */
+.p-contact {
+  background: #eeead0;
+}
+
+.p-contact__container {
+  margin: 0 auto;
+  padding-top: f.pxToRem(32);
+  display: flex;
+  max-width: f.pxToRem(826);
+  justify-content: center;
+  align-items: center;
+
+  @include m.mq('sp') {
+    flex-flow: column wrap;
+  }
+}
+
+.p-contact__item {
+  padding: f.pxToRem(24) f.pxToRem(20);
+  text-align: center;
+  width: 30%;
+  height: f.pxToRem(190);
+  align-items: center;
+  
+  @media(767px < width){
+    &:not(:first-child) {
+      border-left: 1px solid #333;
+    }
+  }
+  
+  @include m.mq('sp'){
+    display: flex;
+    width: 100%;
+    height: f.pxToRem(114);
+    padding: f.pxToRem(32) 0;
+    align-items: center;
+    box-sizing: border-box;
+
+    &:not(:first-child) {
+      border-top: 1px solid #333;
+    }
+  } 
+}
+
+
+.p-contact__icon {
+  height: f.pxToRem(32);
+  
+  @include m.mq('sp'){
+    width: f.pxToRem(32);   
+  } 
+}
+
+.p-contact-item__title {
+  font-size: f.pxToRem(20);
+  padding: f.pxToRem(12) 0 f.pxToRem(16);
+  text-align: center;
+
+  @include m.mq('sp'){
+    width: f.pxToRem(100);
+    padding: 0 f.pxToRem(12);
+    font-size: f.pxToRem(16);
+  } 
+
+  @include m.mq('tab'){
+    font-size: f.pxToRem(16);
+  } 
+}
+
+.p-contact-tel {
+ transition: .5s ease-out;
+  &:hover {
+    opacity: .4;
+  }
+}
+
+.p-contact-button__wrap {
+  width: f.pxToRem(174);
+  margin: 0 auto;
+  
+  @include m.mq('sp'){
+    margin-left: auto;
+    
+    &.u-button-margin {
+      margin-top: f.pxToRem(16);
+    }
+  } 
+}
+
+.p-contact__openTime {
+  font-size: f.pxToRem(12);
+}
+
+

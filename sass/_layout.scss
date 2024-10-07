@@ -1,0 +1,149 @@
+@use 'variable' as v;
+@use 'mixin' as m;
+@use 'function' as f;
+
+.l-inner {
+  width: f.pxToRem(1040);
+  max-width: 100%;
+  margin: 0 auto;
+
+  @include m.mq('sp'){
+    width: f.pxToRem(335);
+    
+  } 
+
+  @include m.mq('tab'){
+    width: f.pxToRem(700);
+  } 
+} 
+
+/* ===============================================
+header
+=============================================== */
+
+.l-header {
+  position: fixed;
+  height: f.pxToRem(80);
+  width: 100%;
+  background: rgb(255, 255, 255, .8);
+  z-index: 9;
+  
+  @include m.mq('sp'){
+    height: f.pxToRem(64);
+  } 
+  
+  @include m.mq('tab'){
+    height: f.pxToRem(64);
+  } 
+}
+
+.l-header__inner {
+  display: flex;
+  align-items: center;
+  max-width: f.pxToRem(1040);
+  margin: 0 auto;
+
+  @include m.mq('sp') {
+    padding: 0 f.pxToRem(20);
+  }
+
+  @include m.mq('tab') {
+    padding: 0 f.pxToRem(40);
+  }
+}
+
+/* ===============================================
+drawer
+=============================================== */
+.l-drawer__icon {
+   position: absolute;
+   top: f.pxToRem(20);
+   right: f.pxToRem(20);
+   z-index: 10;
+
+   @include m.mq('pc') {
+     display: none;
+  }
+
+   @include m.mq('tab'){
+    right: f.pxToRem(40);
+   } 
+}
+
+.l-drawer {
+  display: none;
+  
+  @media (width < 769px){
+    right: -120%;
+    transition: all 0.5s linear;
+    display: block;
+    position: fixed;
+    z-index: 5;
+    padding-top: f.pxToRem(120);
+    background-color: v.$color-primary;
+    width: 100%;
+    height: 100vh;
+
+    &.is-open {
+      right: 0;
+    }
+
+    &.l-drawer__bottom {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+    }
+  }
+}
+
+
+.l-mv {
+  padding-bottom: f.pxToRem(60);
+}
+
+.l-concept {
+  padding: f.pxToRem(60) 0;
+  
+  @include m.mq('sp'){
+    padding: f.pxToRem(72) 0 f.pxToRem(40);
+  } 
+
+}
+
+.l-works {
+  padding: f.pxToRem(120) 0 f.pxToRem(60); 
+
+  @include m.mq('sp'){
+    padding: f.pxToRem(40) 0 f.pxToRem(20);
+  }  
+}
+
+.l-news {
+  padding: f.pxToRem(60) 0 f.pxToRem(120);
+
+  @include m.mq('sp'){
+    padding: f.pxToRem(60) 0;
+  } 
+}
+
+.l-contact {
+  padding: f.pxToRem(120) 0;
+
+  @include m.mq('sp'){
+    padding: f.pxToRem(40) 0;
+  } 
+}
+
+.l-footer {
+ padding: f.pxToRem(76) 0 f.pxToRem(120);
+
+ @include m.mq('sp'){
+  padding: f.pxToRem(36) 0;
+ } 
+}
+
+.l-footer__inner {
+  width: f.pxToRem(680);
+}
+

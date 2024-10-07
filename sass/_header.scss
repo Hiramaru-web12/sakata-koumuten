@@ -1,0 +1,156 @@
+@use 'variable' as v;
+@use 'mixin' as m;
+@use 'function' as f;
+
+/* ===============================================
+header
+=============================================== */
+  
+.p-header__logo {
+ width: f.pxToRem(140);
+ padding: f.pxToRem(18) 0;
+
+ @include m.mq('sp'){
+  width: f.pxToRem(114);
+ } 
+
+ @include m.mq('tab'){
+  width: f.pxToRem(114);
+ } 
+
+  img{
+  width: 100%;
+  }
+}
+
+.p-header__nav {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  padding: f.pxToRem(20) 0;
+  justify-content: center;
+
+  @include m.mq('sp'){
+    display: none;
+  } 
+
+  @include m.mq('tab'){
+    display: none;
+  } 
+
+  li {
+    padding: 0 f.pxToRem(30);
+    border-left: 1px solid #333;
+    transition: 0.5s ease-out;
+    
+    a {
+      text-align: center;
+      line-height: 1;
+      
+      span {
+        color: v.$color-accent;
+        font-size: f.pxToRem(12);
+        display: block;
+        font-family: v.$font-en;
+        margin-top: f.pxToRem(3);
+
+        @include m.mq('sp'){
+          display: none;
+        } 
+      
+        @include m.mq('tab'){
+          display: none;
+        } 
+      }
+    }
+
+    &:hover {
+      opacity: .6;
+    }
+  }
+}
+
+.p-header__contact {
+  width: f.pxToRem(168);
+  margin-right: 0 ;
+  background: v.$color-primary;
+  display: block;
+  text-align: center;
+  align-items: center;
+  padding: f.pxToRem(23) 0;
+  margin-left: auto;
+
+  @include m.mq('sp'){
+    display: none;
+  } 
+
+  @include m.mq('tab'){
+    display: none;
+  } 
+  
+  a{
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    line-height: 1;
+    
+  span {
+    color: v.$color-accent;
+    font-size: f.pxToRem(12);
+    display: block;
+    line-height: 1;
+    font-family: v.$font-en;
+    margin-top: f.pxToRem(6);
+  }
+ }
+}
+
+/* ===============================================
+drawer
+=============================================== */
+.p-drawer__nav {
+  color: #fff;
+  text-align: center;
+  
+  li {
+    padding: f.pxToRem(24) 0;
+    
+    &:not(:last-child){
+      border-bottom: 1px solid #fff;
+    }
+
+    a {
+    display: block;
+    width: 100%;
+    }
+  }
+}
+
+.p-drawer__bottom {
+  display: block;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: f.pxToRem(10) 0;
+  color: #fff;
+  background: #333;
+  border-top: 1px solid #fff;
+}
+
+.p-drawer-bottom__nav {
+  display: flex;
+  justify-content: center;
+
+ li {
+  padding: 0 f.pxToRem(20);
+
+   &:not(:first-child){
+    border-left: 1px solid #fff;
+   }
+ }
+}
+
+.p-drawer__copyright {
+  text-align: center;
+  padding: f.pxToRem(10) 0;
+}

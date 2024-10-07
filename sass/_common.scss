@@ -1,0 +1,44 @@
+@use 'variable' as v;
+@use 'mixin' as m;
+@use 'function' as f;
+
+@media (max-width: 767px) {
+  .is-pc {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .is-sp {
+    display: none;
+  }
+}
+
+/* ===============================================
+セクションタイトル
+=============================================== */
+.p-section__title {
+  font-size: clamp(1.5rem, 1.324rem + 0.75vw, 2rem);
+  font-weight: 500;
+  text-align: center;
+  
+  span {
+    font-size: clamp(0.875rem, 0.831rem + 0.19vw, 1rem);
+    text-align: center;
+    display: block;
+    font-family: v.$font-en;
+  }
+
+  &::after {
+    content: "";
+    display: block;
+    background: v.$color-accent;
+    height: f.pxToRem(1);
+    width: f.pxToRem(64);
+    margin: 16px auto 0;
+    }
+}
+
+
+
+
